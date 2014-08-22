@@ -36,6 +36,8 @@ Icon
 .Spotlight-V100
 .Trashes
 
+figs/
+*.ini
 *.png
 *.iml
 *.csv
