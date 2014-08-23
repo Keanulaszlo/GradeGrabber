@@ -37,7 +37,6 @@ def save_fig():
     fig = plt.gcf()
 
     fig.set_size_inches(24, 13.2)
-    file = open('figs/' + filename + '.png', 'w+')
     fig.savefig(os.path.join(path, filename), dpi=128)
     print(os.path.join(path, filename))
 
@@ -88,7 +87,6 @@ def smooth_graph(csv_name):
 
     plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
-    plt.ylim(0, 100)
     plt.grid()
 
     save_fig()
@@ -107,7 +105,6 @@ def raw_graph(csv_name):
 
     plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
-    #plt.ylim(0, 100)
     plt.grid()
 
     save_fig()
