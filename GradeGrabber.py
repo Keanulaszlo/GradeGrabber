@@ -42,6 +42,29 @@ def save_fig():
     print(os.path.join(path, filename))
 
 
+def plotpoints(plot_change_only, df):
+    if plot_change_only:
+        for k in range(df.shape[1]):
+            # someday i will write regex to do this
+            source = df[df.columns[k]]
+            y_array = [source[0]]  # processed source
+            for g in range((df[df.columns[k]]).size - 1)[1:]:
+                if source[g] == source[g - 1]:
+                    y_array.append(np.NaN)
+                else:
+                    y_array.append(source[g])
+            y_array.append(source[-1])
+
+            ys = np.array(y_array).astype('double')
+            ymask = np.isfinite(ys)
+            plt.plot(df.index[ymask], ys[ymask], label=df.columns[k])
+    else:
+        for k in range(df.shape[1]):
+            source = df[df.columns[k]]
+            ys = np.array(source)
+            plt.plot(df.index, ys, label=df.columns[k])
+
+
 # pls no
 def smooth_graph(csv_name):
     df = DataFrame.from_csv(csv_name, parse_dates=False)
@@ -74,10 +97,7 @@ def smooth_graph(csv_name):
 
 def raw_graph(csv_name):
     df = DataFrame.from_csv(csv_name)
-
-    for k in range(df.shape[1]):
-        ys = np.array(df[df.columns[k]])
-        plt.plot(df.index, ys, label=df.columns[k])
+    plotpoints(config['options'].getboolean('Plot_changes_only', fallback=False), df)
 
     plt.title('Grades')
     plt.xlabel('Date')
