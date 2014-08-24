@@ -38,7 +38,6 @@ def save_fig():
 
     fig.set_size_inches(24, 13.2)
     fig.savefig(os.path.join(path, filename), dpi=128)
-    print(os.path.join(path, filename))
 
 
 def plotpoints(plot_change_only, df):
