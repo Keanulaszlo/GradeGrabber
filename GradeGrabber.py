@@ -17,7 +17,7 @@ from datetime import date, timedelta as td
 
 from bs4 import BeautifulSoup
 
-#graphing magic aka rip me
+# graphing magic aka rip me
 from pandas import DataFrame
 import numpy as np
 import matplotlib.pyplot as plt
