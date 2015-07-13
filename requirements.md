@@ -1,7 +1,7 @@
 Requirements
 ============
 
-* [Python 3.4.x](https://www.python.org/download/)
+* [Python 2.7.x](https://www.python.org/download/)
 * [Beautiful Soup 4](http://www.crummy.com/software/BeautifulSoup/)
 * [SciPy](http://www.scipy.org/)
 * [NumPy](http://www.numpy.org/)
