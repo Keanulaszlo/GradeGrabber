@@ -17,14 +17,14 @@ from datetime import date, timedelta as td
 
 from bs4 import BeautifulSoup
 
-# graphing magic aka rip me
+# graphing imports
 from pandas import DataFrame
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import spline
 
 
-# don't look at this
+# graphing data and plotting points
 def get_last_row(csv_name):
     with open(csv_name, 'r') as f:
         return deque(csv.reader(f), 1)[0]
@@ -63,7 +63,7 @@ def plotpoints(plot_change_only, df):
             plt.plot(df.index, ys, label=df.columns[k])
 
 
-# pls no
+# connecting plot points
 def smooth_graph(csv_name):
     df = DataFrame.from_csv(csv_name, parse_dates=False)
 
@@ -113,11 +113,11 @@ def raw_graph(csv_name):
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-# credentials
+# pull credentials
 username = config['credentials'].get('user')
 password = config['credentials'].get('pass')
 
-# cookie nonsense
+# summon cookiejar
 cj = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
 
